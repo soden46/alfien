@@ -80,6 +80,14 @@
                                                 @enderror
                                             </td>
                                             <td class="row-index">
+                                                <input type="number" name="harga[]" step="0.0" class="form-control @error('harga')is-invalid @enderror" id="harga" placeholder="Masukan harga" required value="{{old('harga')}}">
+                                                @error('harga')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                                @enderror
+                                            </td>
+                                            <td class="row-index">
                                                 <input type="date" name="tanggal[]" class="form-control @error('tanggal')is-invalid @enderror" id="tanggal" placeholder="Masukan tanggal" required value="{{old('tanggal')}}">
                                                 @error('tanggal')
                                                 <div class="invalid-feedback">

@@ -46,6 +46,8 @@ class DataBarangKeluarController extends Controller
             'barang.*' => ['required'],
             'qty' => ['required', 'array'],
             'qty.*' => ['required'],
+            'harga' => ['required', 'array'],
+            'harga.*' => ['required'],
             'tanggal' => ['required']
         ]);
 
@@ -61,12 +63,9 @@ class DataBarangKeluarController extends Controller
             DetailBarangKeluar::create([
                 'id_barang_keluar' => $idKeluar,
                 'kode_barang' => $id_barang,
+                'harga' => $validatedData['harga'][$key],
                 'qty' => $validatedData['qty'][$key],
-
             ]);
-
-
-
             // Menambah qty di model Barang sesuai dengan qty yang dimasukkan oleh pengguna
             $dataBarang = Barang::findOrFail($id_barang);
             $dataBarang->decrement('qty', $validatedData['qty'][$key]);
@@ -85,6 +84,7 @@ class DataBarangKeluarController extends Controller
         $ValidatedData = $request->validate([
             'id_barang' => ['required'],
             'qty' => ['required', 'numeric'],
+            'harga' => ['required'],
             'tanggal' => ['required'],
             'karyawan' => ['required'],
         ]);
@@ -94,13 +94,13 @@ class DataBarangKeluarController extends Controller
         $nama_barang =  barang::where('kode_barang', $kode_barang)->first();
 
         BarangKeluar::where('id_barang_keluar', $id_barang_keluar)->update([
-            'kode_barang' => $request->id_barang,
-            'tanggal' => $request->tanggal,
             'karyawan' => $request->karyawan,
+            'tanggal' => $request->tanggal,
         ]);
 
         DetailBarangKeluar::where('id_detail_barang_keluar', $request->id_detail_barang_keluar)->update([
-            'nama_barang' => $nama_barang->nama_barang,
+            'kode_barang' => $request->id_barang,
+            'harga' => $request->harga,
             'qty' => $request->qty,
         ]);
 

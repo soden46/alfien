@@ -84,6 +84,16 @@
                             </div>
 
                             <div class="form-floating">
+                                <label for="floatingInput">Harga</label>
+                                <input type="number" name="harga" step="0.0" class="form-control @error('harga')is-invalid @enderror" id="harga" placeholder="Masukan harga" required value="{{$barangK->harga}}">
+                                @error('harga')
+                                <div class="invalid-feedback">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-floating">
                                 <label for="floatingInput">Tanggal</label>
                                 <input type="date" name="tanggal" class="form-control @error('tanggal')is-invalid @enderror" id="tanggal" placeholder="Masukan tanggal" required value="{{$barangK->tanggal ?? ''}}">
                                 @error('tanggal')

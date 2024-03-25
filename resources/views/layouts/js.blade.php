@@ -44,7 +44,10 @@
             newRow += '</td>';
             newRow += '<td class="row-index">';
             newRow += '<select class="form-control" name="barang[]" required>';
-            newRow += '<option value="" selected>Nama Barang</option>';
+            newRow += '<option value="option_select" disabled selected>Nama Barang</option>';
+            @foreach($barang as $bar)
+            newRow += '<option value="{{ $bar->nama_barang }}">{{ $bar->nama_barang }}</option>';
+            @endforeach
             newRow += '</select>';
             newRow += '</td>';
             newRow += '<td class="row-index">';
@@ -54,7 +57,7 @@
             newRow += '<input type="number" name="harga[]" step="0.0" class="form-control" placeholder="Masukan harga" required>';
             newRow += '</td>';
             newRow += '<td class="row-index">';
-            newRow += '<input type="date" name="tanggal[]" class="form-control" placeholder="Masukan tanggal" required>';
+            newRow += '<input type="date" name="tanggal" class="form-control" placeholder="Masukan tanggal" required>';
             newRow += '</td>';
             newRow += '<td>';
             newRow += '<button class="btn btn-danger btn-sm mb-3 remove" type="button"><i class="fas fa-trash"></i></button>';
@@ -66,6 +69,12 @@
         // Menghapus baris ketika tombol hapus diklik
         $('#tbody1').on('click', '.remove', function() {
             $(this).closest('tr').remove();
+        });
+
+        // Ketika tanggal pertama diubah, atur nilai tanggal lainnya
+        $('#tbody1').on('change', '.tanggal:first', function() {
+            var tanggalPertama = $(this).val();
+            $('.tanggal').not(this).val(tanggalPertama);
         });
 
         // Ketika id_barang diubah, tampilkan nama_barang yang sesuai
@@ -109,14 +118,15 @@
             newRow += '</td>';
             newRow += '<td class="row-index">';
             newRow += '<select class="form-control" name="barang[]" required>';
-            newRow += '<option value="" selected>Nama Barang</option>';
-            newRow += '</select>';
-            newRow += '</td>';
+            newRow += '<option value="option_select" disabled selected>Nama Barang</option>';
+            @foreach($barang as $bar)
+            newRow += '<option value="{{ $bar->nama_barang }}">{{ $bar->nama_barang }}</option>';
+            @endforeach
             newRow += '<td class="row-index">';
             newRow += '<input type="number" name="qty[]" class="form-control" placeholder="Masukan Qty Barang" required>';
             newRow += '</td>';
             newRow += '<td class="row-index">';
-            newRow += '<input type="date" name="tanggal[]" class="form-control" placeholder="Masukan tanggal" required>';
+            newRow += '<input type="date" name="tanggal" class="form-control" placeholder="Masukan tanggal" required>';
             newRow += '</td>';
             newRow += '<td>';
             newRow += '<button class="btn btn-danger btn-sm mb-3 remove" type="button"><i class="fas fa-trash"></i></button>';
@@ -128,6 +138,12 @@
         // Menghapus baris ketika tombol hapus diklik
         $('#tbody2').on('click', '.remove', function() {
             $(this).closest('tr').remove();
+        });
+
+        // Ketika tanggal pertama diubah, atur nilai tanggal lainnya
+        $('#tbody2').on('change', '.tanggal1', function() {
+            var tanggalPertama = $(this).val();
+            $('.tanggal').not(this).val(tanggalPertama);
         });
 
         // Detail Barang Masuk

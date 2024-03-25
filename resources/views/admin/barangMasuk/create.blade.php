@@ -109,7 +109,7 @@
                                                 @enderror
                                             </td>
                                             <td class="row-index">
-                                                <input type="date" name="tanggal[]" class="form-control @error('tanggal')is-invalid @enderror" id="tanggal" placeholder="Masukan tanggal" required value="{{old('tanggal')}}">
+                                                <input type="date" name="tanggal[]" class="form-control tanggal1 @error('tanggal')is-invalid @enderror" id="tanggal" placeholder="Masukan tanggal" required value="{{old('tanggal')}}">
                                                 @error('tanggal')
                                                 <div class="invalid-feedback">
                                                     {{$message}}

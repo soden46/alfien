@@ -43,7 +43,6 @@
                                     <thead>
                                         <tr>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering Kode Barang: activate to sort column ascending">No</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering Kode Barang: activate to sort column ascending">Kode Barang</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering Nama Barang: activate to sort column ascending">Supplier</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering Tanggal: activate to sort column ascending">Tanggal</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering Aksi: activate to sort column ascending">Detail</th>
@@ -53,12 +52,11 @@
                                     @foreach($barang as $key => $brg)
                                     <tbody>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{$brg->kode_barang ?? ''}}</td>
                                         <td>{{$brg->supplier ?? ''}}</td>
                                         <td>{{date('d/m/Y',strtotime($brg->tanggal))}}</td>
                                         <td>
                                             <div class="btn-group" style="width:135px">
-                                                <a href="{{route('barang-masuk/detail',$brg->id_detail_barang_masuk)}}"><button class="btn btn-success">Lihat</button></a>
+                                                <a href="{{route('barang-masuk/detail',$brg->id_barang_masuk)}}"><button class="btn btn-success">Lihat</button></a>
                                             </div>
                                         </td>
                                         <td>

@@ -18,6 +18,7 @@
                 <thead>
                     <tr>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering Kode Barang: activate to sort column ascending">No</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering Kode Barang: activate to sort column ascending">Kode Barang</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering Kode Barang: activate to sort column ascending">Nama Barang</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering Nama Barang: activate to sort column ascending">Harga</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering Tanggal: activate to sort column ascending">Qty</th>
@@ -26,7 +27,8 @@
                 @foreach($barang as $key => $brg)
                 <tbody>
                     <td>{{ $key + 1 }}</td>
-                    <td>{{$brg->nama_barang ?? ''}}</td>
+                    <td>{{$brg->kode_barang ?? ''}}</td>
+                    <td>{{$brg->barangs->nama_barang ?? ''}}</td>
                     <td>{{$brg->harga ?? ''}}</td>
                     <td>{{$brg->qty ?? ''}}</td>
                     </tr>

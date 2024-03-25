@@ -95,7 +95,7 @@
 
                             <div class="form-floating">
                                 <label for="floatingInput">Tanggal</label>
-                                <input type="date" name="tanggal" class="form-control @error('tanggal')is-invalid @enderror" id="tanggal" placeholder="Masukan tanggal" required value="{{$barangM->tanggal ?? ''}}">
+                                <input type="date" name="tanggal[]" class="form-control tanggal @error('tanggal')is-invalid @enderror" id="tanggal" placeholder="Masukan tanggal" required value="{{$barangM->tanggal ?? ''}}">
                                 @error('tanggal')
                                 <div class="invalid-feedback">
                                     {{$message}}

@@ -51,12 +51,11 @@
                                     </thead>
                                     @foreach($barangk as $brg)
                                     <tbody>
-                                        <td>{{$brg->kode_barang ?? ''}}</td>
                                         <td>{{$brg->karyawan ?? ''}}</td>
                                         <td>{{date('d/m/Y',strtotime($brg->tanggal))}}</td>
                                         <td>
                                             <div class="btn-group" style="width:135px">
-                                                <a href="{{route('barang-keluar/detail',$brg->id_detail_barang_keluar)}}"><button class="btn btn-success">Lihat</button></a>
+                                                <a href="{{route('barang-keluar/detail',$brg->id_barang_keluar)}}"><button class="btn btn-success">Lihat</button></a>
                                             </div>
                                         </td>
                                         <td>

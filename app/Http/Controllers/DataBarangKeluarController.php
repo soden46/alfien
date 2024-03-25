@@ -46,25 +46,26 @@ class DataBarangKeluarController extends Controller
             'barang.*' => ['required'],
             'qty' => ['required', 'array'],
             'qty.*' => ['required'],
-            'tanggal' => ['required', 'array'],
-            'tanggal.*' => ['required'],
+            'tanggal' => ['required']
         ]);
 
         // Iterasi melalui setiap baris dan simpan sebagai data baru
         foreach ($validatedData['id_barang'] as $key => $id_barang) {
             $Barang = barang::where('kode_barang', $id_barang)->first();
-            $detail = DetailBarangKeluar::create([
-                'nama_barang' => $Barang->nama_barang,
+            $keluar = BarangKeluar::create([
+                'karyawan' => $validatedData['karyawan'],
+                'tanggal' => $validatedData['tanggal'],
+            ]);
+
+            $idKeluar = $keluar->id_barang_keluar;
+            DetailBarangKeluar::create([
+                'id_barang_keluar' => $idKeluar,
+                'kode_barang' => $id_barang,
                 'qty' => $validatedData['qty'][$key],
 
             ]);
-            $idDetail = $detail->id_detail_barang_keluar;
-            BarangKeluar::create([
-                'id_detail_barang_keluar' => $idDetail,
-                'kode_barang' => $id_barang,
-                'karyawan' => $validatedData['karyawan'],
-                'tanggal' => $validatedData['tanggal'][$key],
-            ]);
+
+
 
             // Menambah qty di model Barang sesuai dengan qty yang dimasukkan oleh pengguna
             $dataBarang = Barang::findOrFail($id_barang);
